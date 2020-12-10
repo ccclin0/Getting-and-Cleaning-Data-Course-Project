@@ -1,0 +1,45 @@
+---
+title: "codebook"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+The run_analysis.R is followed the project's instructions
+
+1.set working directory to where my datasets locatated.
+
+2.read each table and assign them to vaiables
+features.txt has 561 rows and 2 columns
+activity_labels.txt has 6 rows and 2 colums
+test/subject_test.txt has 2947 rows and 1 colums
+train/subject_train.txt has 7352 rows and 1 colums
+test/X_test.txt has 2947 rows and 561 colums
+test/y_test.txt has 2947 rows and 1 colums
+train/X_train.txt has 7352 rows and 561 colums
+train/y_train.txt has 7352 rows and 1 colums
+
+3.merge the training and test data to get a new dataset
+row combine x_test(2947rows) and x_train(7352rows) get a new x_data(10299rows and 561 colums)
+row combine y_test(2947rows) and y_train(7352rows) get a new y_data(10299rows and 1 colums)
+row combine subject_test(2947rows) and subject_train(7352rows) get a new subject_data(10299rows and 1 colums)
+colum combine x_data,y_data and subject_data to get after_merge(10299rows,563 columns.)
+
+4.Extracts only the mean and sd for each measurement
+select only subject,code and the mean and sd for each measurement get a new dataset call after_merge1(10299rows,88columns)
+
+5.uses descreptive activity names to name the activities in the data set
+code column of after_merge1 replaced with activity taken from second colum of the activities variable
+
+6.Appropriately labels the data set with descriptive variable names
+code column replaced by activities
+All Acc in column’s name replaced by Accelerometer
+All Gyro in column’s name replaced by Gyroscope
+All BodyBody in column’s name replaced by Body
+All Mag in column’s name replaced by Magnitude
+All start with character f in column’s name replaced by Frequency
+All start with character t in column’s name replaced by Time
+
+7.get average
+taking the means of each variable for each activity and each subject, after groupped by subject and activity get the dataset called average_data(180rows,88columns)
